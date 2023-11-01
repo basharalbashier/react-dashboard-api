@@ -1,5 +1,6 @@
-class EmployeesController < ApplicationController
+class EmployeesController < ApplicationController 
   before_action :set_employee, only: %i[ show edit update destroy ]
+  protect_from_forgery except: :sample
 
   # GET /employees or /employees.json
   def index
@@ -63,7 +64,7 @@ class EmployeesController < ApplicationController
       @employee = Employee.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # Only allow a list of trusted kDataTeam through.
     def employee_params
       params.require(:employee).permit(:name, :email, :age, :access,:phone)
     end
